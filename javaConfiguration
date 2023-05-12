@@ -1,0 +1,22 @@
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner demo(ItemRepository itemRepository) {
+        return (args) -> {
+            // add sample data to the database
+            Item item1 = new Item();
+            item1.setName("Item 1");
+            item1.setDescription("This is item 1");
+            itemRepository.save(item1);
+
+            Item item2 = new Item();
+            item2.setName("Item 2");
+            item2.setDescription("This is item 2");
+            itemRepository.save(item2);
+        };
+    }
+}
